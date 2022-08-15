@@ -1,23 +1,15 @@
+namespace SpriteKind {
+    export const StatusBar = SpriteKind.create()
+}
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
     info.changeScoreBy(1)
     music.baDing.play()
     tiles.setTileAt(location, assets.tile`transparency16`)
 })
-scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.doorLockedNorth, function (sprite, location) {
-    info.setLife(3)
-})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
     info.changeLifeBy(-1)
     music.powerDown.play()
     tiles.setTileAt(location, assets.tile`transparency16`)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    tiles.setTilemap(tilemap`4321`)
-    tiles.placeOnRandomTile(mySprite, sprites.dungeon.collectibleBlueCrystal)
-    tiles.setTileAt(location, assets.tile`transparency16`)
-})
-scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairWest, function (sprite, location) {
-    game.over(true)
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
     info.setLife(game.askForNumber(""))
@@ -34,16 +26,16 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleRedCrystal, fu
     info.startCountdown(10)
     mySprite.startEffect(effects.fire)
 })
-scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairLarge, function (sprite, location) {
-    game.reset()
-})
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, function (sprite, location) {
     tiles.setTilemap(tilemap`level3`)
     tiles.placeOnRandomTile(mySprite, assets.tile`transparency16`)
     tiles.setTileAt(location, assets.tile`transparency16`)
 })
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairSouth, function (sprite, location) {
+    game.over(true)
+})
 let mySprite: Sprite = null
-info.setLife(4)
+info.setLife(5)
 tiles.setTilemap(tilemap`4321`)
 info.setScore(0)
 mySprite = sprites.create(assets.image`12`, SpriteKind.Player)
